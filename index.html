@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validação de Formulário</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    form {
+      max-width: 300px;
+    }
+    .error {
+      color: red;
+      margin-top: 10px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Validação de Números</h1>
+  <form id="formulario">
+    <label for="campoA">Campo A:</label><br>
+    <input type="number" id="campoA" name="campoA" required><br><br>
+
+    <label for="campoB">Campo B:</label><br>
+    <input type="number" id="campoB" name="campoB" required><br><br>
+
+    <button type="submit">Submeter</button>
+    <p id="mensagemErro" class="error">Erro: O valor de B deve ser maior que o valor de A.</p>
+  </form>
+
+  <script>
+    document.getElementById("formulario").addEventListener("submit", function(event) {
+      // Evita o envio padrão do formulário
+      event.preventDefault();
+
+      // Obter os valores dos campos A e B
+      const campoA = parseFloat(document.getElementById("campoA").value);
+      const campoB = parseFloat(document.getElementById("campoB").value);
+
+      // Elemento para exibir mensagens de erro
+      const mensagemErro = document.getElementById("mensagemErro");
+
+      // Validação: B deve ser maior que A
+      if (campoB > campoA) {
+        alert("Formulário enviado com sucesso!");
+        mensagemErro.style.display = "none";
+      } else {
+        mensagemErro.style.display = "block";
+      }
+    });
+  </script>
+</body>
+</html>
